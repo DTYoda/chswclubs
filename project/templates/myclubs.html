@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Clubs
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <th>Club Name</td>
+            <th>Owner</th>
+            <th>Subject</th>
+            <th>Decription</th>
+            <th>Date Joined</th>
+            <th>Leave?</th>
+        </tr>
+        {% for club in clubs %}
+        <tr>
+            <td>{{club["name"]}}</td>
+            <td>{{club["owner"]}}</td>
+            <td>{{club["subject"]}}</td>
+            <td>{{club["desc"]}}</td>
+            <td>{{club["date"]}}</td>
+            <td>
+                <form action="/myclubs" method="post">
+                    <input type="submit" value="leave">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

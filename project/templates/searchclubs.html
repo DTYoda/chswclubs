@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="name" placeholder="Search Club Name" type="text">
+    </div>
+
+    <ul id="results" style="list-style:none"></ul>
+
+    <script>
+        let input = document.querySelector("input");
+        input.addEventListener("input", async function() {
+            let response = await fetch("/searchclubs/search?q=" + input.value);
+            let clubs = await response.json();
+            let html = "";
+            for (let id in clubs)
+            {
+                let name = clubs[id].name.replace("<", "&lt;").replace("&", "&lt;");
+                html += "<li><a href=\"/clubs?name=" + name + "\">" + name + "</a></li>";
+            }
+            document.getElementById("results").innerHTML = html;
+        })
+    </script>
+{% endblock %}

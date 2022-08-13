@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Club
+{% endblock %}
+
+{% block main %}
+    <form action="/createclub" method="post">
+        <input type="text" name="name" placeholder="Club Name">
+        <input type="text" name="desc" placeholder="A short Description">
+        <input type="text" name="longDesc" placeholder="Discribe your Club">
+        <select name="subject">
+            <option value="STEM">STEM</option>
+            <option value="Community">Community</option>
+            <option value="Arts">The Arts</option>
+            <option value="Other">Other</option>
+        </select>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Meeting Time (Leave Blank if none)</th>
+            </tr>
+            <tr>
+                <td>Sunday</td>
+                <td><input type="text" name="sun"></td>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td><input type="text" name="mon"></td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td><input type="text" name="tue"></td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td><input type="text" name="wed"></td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td><input type="text" name="thu"></td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td><input type="text" name="fri"></td>
+            </tr>
+            <tr>
+                <td>Saturday</td>
+                <td><input type="text" name="sat"></td>
+            </tr>
+        </table>
+        <input type="text" name="teacher" placeeholder="Advising Teacher">
+        <input type="file" name="clubIcon">
+        <input type="text" name="clubRoom" placeholder="Room or Address">
+        <input type="submit">
+    </form>
+{% endblock %}
